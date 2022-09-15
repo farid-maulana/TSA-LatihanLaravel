@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+        $this->call([
+            PortfolioSeeder::class,
+        ]);
+
+        Employee::factory(10)->create();
     }
 }

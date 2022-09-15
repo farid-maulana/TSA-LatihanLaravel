@@ -49,3 +49,6 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/portfolios/{portfolio}', [PortfolioController::class, 'show'])->name('portfolios.show');
+
+Route::resource('employees', EmployeeController::class);
+Route::post('employees/search', [EmployeeController::class, 'search'])->name('employees.search');
