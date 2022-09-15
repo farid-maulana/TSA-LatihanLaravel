@@ -48,7 +48,7 @@
                                     <td>{{ $employee->employee_id_number }}</td>
                                     <td>{{ $employee->name }}</td>
                                     <td>{{ $employee->gender }}</td>
-                                    <td>{{ $employee->division }}</td>
+                                    <td>{{ $employee->division->name }}</td>
                                     <td>{{ $employee->position }}</td>
                                     <td>
                                         <a href="{{ route('employees.show', $employee->id) }}"

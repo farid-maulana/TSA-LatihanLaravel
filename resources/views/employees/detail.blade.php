@@ -41,7 +41,7 @@
                     <dd class="col-sm-9">{{ $employee->address }}</dd>
 
                     <dt class="col-sm-3">Division</dt>
-                    <dd class="col-sm-9">{{ $employee->division }}</dd>
+                    <dd class="col-sm-9">{{ $employee->division->name }}</dd>
 
                     <dt class="col-sm-3">Position</dt>
                     <dd class="col-sm-9">{{ $employee->position }}</dd>

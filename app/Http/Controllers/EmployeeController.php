@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Division;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $divisions = Division::all();
+        return view('employees.create', compact('divisions'));
     }
 
     /**
@@ -81,7 +83,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.edit', compact('employee'));
+        $divisions = Division::all();
+        return view('employees.edit', compact('employee', 'divisions'));
     }
 
     /**

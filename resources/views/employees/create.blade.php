@@ -64,7 +64,12 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-6">
                             <label for="division">Division</label>
-                            <input type="text" class="form-control" name="division" id="division" required>
+                            <select class="form-select" name="division_id" id="division_id" required>
+                                <option value="" selected disabled>Choose Division</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="position">Position</label>

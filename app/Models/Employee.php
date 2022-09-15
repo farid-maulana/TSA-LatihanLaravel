@@ -22,7 +22,17 @@ class Employee extends Model
         'email', 
         'phone_number', 
         'address', 
-        'division', 
+        'division_id', 
         'position'
     ];
+
+    /**
+     * Get the division that owns the Employee
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
 }

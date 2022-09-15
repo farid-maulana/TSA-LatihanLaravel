@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Division;
 use App\Models\Employee;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,10 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Division::factory(10)->create();
         $this->call([
             PortfolioSeeder::class,
+            EmployeeSeeder::class,
         ]);
-
-        Employee::factory(10)->create();
     }
 }
