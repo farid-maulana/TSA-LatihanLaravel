@@ -16,7 +16,10 @@
 <section id="portfolio-details" class="portfolio-details">
     <div class="container">
         <div class="row gy-4">
-            <div class="col-12">
+            <div class="col-4">
+                <img src="{{ asset('storage/employees/' . $employee->photo) }}" width="400px">
+            </div>
+            <div class="col-8">
                 <dl class="row">
                     <dt class="col-sm-3">Employee ID Number</dt>
                     <dd class="col-sm-9">{{ $employee->employee_id_number }}</dd>
@@ -46,11 +49,11 @@
                     <dt class="col-sm-3">Position</dt>
                     <dd class="col-sm-9">{{ $employee->position }}</dd>
                 </dl>
-                <div class="row">
-                    <div class="col-2">
-                        <a href="{{ route('employees.index') }}" class="btn btn-secondary">Back</a>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-2">
+                <a href="{{ route('employees.index') }}" class="btn btn-secondary">Back</a>
             </div>
         </div>
     </div>

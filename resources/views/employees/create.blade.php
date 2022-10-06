@@ -18,7 +18,8 @@
     <div class="container">
         <div class="row gy-4">
             <div class="col-12">
-                <form action="{{ route('employees.store') }}" method="POST" role="form">
+                <form action="{{ route('employees.store') }}" method="POST" role="form"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-3">
                         <div class="form-group col-md-6">
@@ -66,7 +67,7 @@
                             <label for="division">Division</label>
                             <select class="form-select" name="division_id" id="division_id" required>
                                 <option value="" selected disabled>Choose Division</option>
-                                @foreach ($divisions as $division)
+                                @foreach($divisions as $division)
                                     <option value="{{ $division->id }}">{{ $division->name }}</option>
                                 @endforeach
                             </select>
@@ -74,6 +75,12 @@
                         <div class="form-group col-md-6">
                             <label for="position">Position</label>
                             <input type="text" class="form-control" name="position" id="position" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-12">
+                            <label for="photo">Photo</label>
+                            <input type="file" class="form-control" name="photo" id="photo">
                         </div>
                     </div>
                     <div class="mb-3">

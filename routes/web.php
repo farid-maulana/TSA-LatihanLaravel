@@ -52,3 +52,11 @@ Route::get('/portfolios/{portfolio}', [PortfolioController::class, 'show'])->nam
 
 Route::resource('employees', EmployeeController::class);
 Route::post('employees/search', [EmployeeController::class, 'search'])->name('employees.search');
+
+Route::get('employees/salary/{employee}', [EmployeeController::class, 'salary_report'])->name('employees.salary');
+
+Route::resource('articles', ArticleController::class);
+
+Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf'])->name('cetak_pdf');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -36,9 +36,9 @@
                             <tr>
                                 <th>Employee ID</th>
                                 <th>Name</th>
-                                <th>Gender</th>
                                 <th>Division</th>
                                 <th>Position</th>
+                                <th>Photo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -47,12 +47,17 @@
                                 <tr>
                                     <td>{{ $employee->employee_id_number }}</td>
                                     <td>{{ $employee->name }}</td>
-                                    <td>{{ $employee->gender }}</td>
                                     <td>{{ $employee->division->name }}</td>
                                     <td>{{ $employee->position }}</td>
                                     <td>
+                                        <img src="{{ asset('storage/employees/' . $employee->photo) }}"
+                                            width="50px" height="50px">
+                                    </td>
+                                    <td>
                                         <a href="{{ route('employees.show', $employee->id) }}"
                                             class="btn btn-sm btn-info">Detail</a>
+                                        <a href="{{ route('employees.salary', $employee->id) }}"
+                                            class="btn btn-sm btn-success">Salary Report</a>
                                         <a href="{{ route('employees.edit', $employee->id) }}"
                                             class="btn btn-sm btn-warning">Edit</a>
                                         <form

@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Division;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class EmployeeController extends Controller
 {
@@ -40,7 +42,12 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        Employee::create($request->validated());
+        $validated = $request->validated();
+        
+        $path = $request->file('photo')->store('public/employees');
+        $validated['photo'] = basename($path);
+
+        Employee::create($validated);
 
         return redirect()->route('employees.index');
     }
@@ -75,6 +82,12 @@ class EmployeeController extends Controller
         }
     }
 
+    public function salary_report(Employee $employee)
+    {
+        $pdf = PDF::loadview('employees.salary', compact('employee'));
+        return $pdf->stream();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,7 +109,17 @@ class EmployeeController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        $employee->update($request->validated());
+        $validated = $request->validated();
+
+        if ($employee->photo && file_exists(storage_path('app/public/' . $employee->photo)))
+        {
+            Storage::delete('public/' . $employee->photo);
+        }
+
+        $path = $request->file('photo')->store('public/employees');
+        $validated['photo'] = basename($path);
+
+        $employee->update($validated);
 
         return redirect()->route('employees.index');
     }

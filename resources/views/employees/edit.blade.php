@@ -19,7 +19,7 @@
         <div class="row gy-4">
             <div class="col-12">
                 <form action="{{ route('employees.update', $employee->id) }}" method="POST"
-                    role="form">
+                    role="form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
@@ -86,6 +86,12 @@
                             <label for="position">Position</label>
                             <input type="text" class="form-control" name="position" id="position"
                                 value="{{ $employee->position }}" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-12">
+                            <label for="photo">Photo</label>
+                            <input type="file" class="form-control" name="photo" id="photo">
                         </div>
                     </div>
                     <div class="mb-3">

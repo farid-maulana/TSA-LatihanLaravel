@@ -23,7 +23,8 @@ class Employee extends Model
         'phone_number', 
         'address', 
         'division_id', 
-        'position'
+        'position',
+        'photo',
     ];
 
     /**
